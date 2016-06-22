@@ -89,3 +89,4 @@ src/AssemblySharedInfoGenerator/AssemblySharedInfo.cs
 GregStandaloneAuth.dll
 /src/Libraries/Watch3DNodeModels/*.resources
 *.resources
+src/AssemblySharedInfoGenerator/AssemblySharedInfo.cs
