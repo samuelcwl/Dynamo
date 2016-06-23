@@ -17,11 +17,7 @@ namespace Dynamo.Nodes
     public partial class NoteView : IViewModelView<NoteViewModel>
     {
         public NoteViewModel ViewModel { get; private set; }
-
-        private bool noteWasClicked;
-
-        private int oldZIndex;
-
+        
         public NoteView()
         {
             InitializeComponent();
@@ -83,7 +79,6 @@ namespace Dynamo.Nodes
             System.Guid noteGuid = this.ViewModel.Model.GUID;
             ViewModel.WorkspaceViewModel.DynamoViewModel.ExecuteCommand(
                 new DynCmd.SelectModelCommand(noteGuid, Keyboard.Modifiers.AsDynamoType()));
-            //noteWasClicked = true;
             BringToFront();
         }
 
@@ -127,18 +122,13 @@ namespace Dynamo.Nodes
             {
                 PrepareZIndex();
             }
-
-            //var index = ++NodeViewModel.StaticZIndex;
-
+            
             ViewModel.ZIndex = ++NodeViewModel.StaticZIndex;
-
-            //oldZIndex = noteWasClicked ? index : ViewModel.ZIndex;
-            //ViewModel.ZIndex = index;
         }
 
 
         /// <summary>
-        /// If Zindex is more then max value of int, it should be set back to 0 to all elements.
+        /// If ZIndex is more then max value of int, it should be set back to 0 for all elements.
         /// </summary>
         private void PrepareZIndex()
         {
